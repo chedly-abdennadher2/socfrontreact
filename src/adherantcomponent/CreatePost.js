@@ -4,8 +4,13 @@ import axios from 'axios';
 
 const CreatePost = (props) => {
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => {
-        axios.post('http://localhost:8067/ADHERENT/adherent/add', data).then(result => {
+    var adherent={nom:'',prenom:''};
+
+	const onSubmit = data => {
+	adherent.nom=document.getElementById("nom").value;
+	adherent.prenom=document.getElementById("prenom").value;
+
+		axios.post('http://localhost:8067/ADHERENT/adherent/add', adherent).then(result => {
             props.history.push("/");
         })
     };
@@ -18,11 +23,11 @@ const CreatePost = (props) => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                             <label>nom</label>
-                            <input type="text" className="form-control" name="nom" />
+                            <input type="text" className="form-control" name="nom" id="nom" />
                         </div>
                         <div className="form-group">
                             <label>prenom</label>
-                            <input type="text" className="form-control" name="prenom" />
+                            <input type="text" className="form-control" name="prenom" id="prenom"/>
                         </div>
                         
                         <button type="submit" className="btn btn-primary">add </button>

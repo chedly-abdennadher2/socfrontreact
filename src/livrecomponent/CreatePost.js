@@ -4,8 +4,14 @@ import axios from 'axios';
 
 const CreatePoste = (props) => {
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => {
-        axios.post('http://localhost:8067/LIVRE/livre/add', data).then(result => {
+    var livre = {titre:'' ,auteur:'',dateedition:'',categorie:'' };
+	const onSubmit = data => {
+	livre.auteur=document.getElementById("auteur").value;
+	livre.titre=document.getElementById("titre").value;
+	livre.dateedition=document.getElementById("dateedition").value;
+	livre.categorie=document.getElementById("categorie").value;
+	
+        axios.post('http://localhost:8067/LIVRE/livre/add', livre).then(result => {
             props.history.push("/");
         })
     };
@@ -18,19 +24,19 @@ const CreatePoste = (props) => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                             <label>titre</label>
-                            <input type="text" class="form-text text-danger" name="titre"/>
+                            <input type="text" class="form-text text-danger" name="titre" id="titre"/>
                         </div>
                         <div className="form-group">
                             <label>auteur</label>
-                            <input type="text" className="form-control" name="auteur"  />
+                            <input type="text" className="form-control" name="auteur" id="auteur"  />
                         </div>
                         <div className="form-group">
                             <label>dateEdition</label>
-                            <input type="text" className="form-control" name="dateedition" />
+                            <input type="date" className="form-control" name="dateedition" id="dateedition" />
                         </div>
                         <div className="form-group">
                             <label>categorie</label>
-                            <input type="text" className="form-control" name="categorie"  />
+                            <input type="text" className="form-control" name="categorie" id="categorie" />
                  
                         </div>
                         
