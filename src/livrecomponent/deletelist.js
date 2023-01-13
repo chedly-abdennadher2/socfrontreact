@@ -21,16 +21,7 @@ const DeletePoste = (props) => {
 
     return (
         <div>
-		
-		<div>
-		{post.numISBN}
-		</div>
-        <div>
-		{post.titre}
-</div>
-        <div>
-		{post.auteur}
-</div>
+	<div>	{id}</div>
 		
             <div className="btn-group">
                 <button onClick={handleRemovePost} className="btn btn-danger">
